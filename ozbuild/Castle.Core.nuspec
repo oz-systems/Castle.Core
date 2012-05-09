@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<metadata xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+		<id>Oz.Castle.Core</id>
+		<version>3.0.0</version>
+		<title>Castle.Core (Oz Version)</title>
+		<authors>Castle Project Contributors</authors>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>DynamicProxy, Logging, and Dictionary Adapter components</description>
+		<summary>Castle Project core components built for Oz Systems</summary>
+		<language>en-US</language>
+		<projectUrl>http://www.castleproject.org/</projectUrl>
+		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
+		<iconUrl>http://www.castleproject.org/images/cp_logo32.png</iconUrl>
+	</metadata>
+</package>
