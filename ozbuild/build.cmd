@@ -1,2 +1,2 @@
 IF NOT EXIST lib mkdir lib
-IF NOT EXIST lib\NET40cp mkdir lib\NET40cp
+IF NOT EXIST lib\NET40 mkdir lib\NET40
