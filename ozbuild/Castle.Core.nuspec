@@ -13,4 +13,7 @@
 		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
 		<iconUrl>http://www.castleproject.org/images/cp_logo32.png</iconUrl>
 	</metadata>
+	<files>
+		<file src="lib\**\*.*" target="lib" />
+	</files>
 </package>
