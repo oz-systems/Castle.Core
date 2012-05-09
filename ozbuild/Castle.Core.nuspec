@@ -12,6 +12,6 @@
 		<projectUrl>http://www.castleproject.org/</projectUrl>
 		<licenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</licenseUrl>
 		<iconUrl>http://www.castleproject.org/images/cp_logo32.png</iconUrl>
-		<files src="lib">
+		<files src="lib" />
 	</metadata>
 </package>
