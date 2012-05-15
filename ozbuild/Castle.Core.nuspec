@@ -16,4 +16,7 @@
 	<files>
 		<file src="lib\**\*.*" target="lib" />
 	</files>
+	<references>
+		<reference file="Castle.Core.dll" />
+	</references>
 </package>
