@@ -1,4 +1,4 @@
-﻿// Copyright 2004-2010 Castle Project - http://www.castleproject.org/
+﻿// Copyright 2004-2012 Castle Project - http://www.castleproject.org/
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@ namespace Castle.Components.DictionaryAdapter.Xml
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Linq;
 	using System.Xml.XPath;
 	using System.Xml.Xsl;
 
@@ -88,6 +87,32 @@ namespace Castle.Components.DictionaryAdapter.Xml
 
 			if (firstStep != null)
 				firstStep.SetContext(context);
+		}
+
+		public void InsertNodesBefore(XPathNavigator navigator)
+		{
+			InsertNodesBefore(navigator, navigator);
+		}
+
+		public void InsertNodesBefore(XPathNavigator navigator, XPathNavigator evaluator)
+		{
+			if (firstStep == null)
+				throw Error.XPathNotCreatable(this);
+
+			firstStep.InsertNodesBefore(navigator, evaluator);
+		}
+
+		public void AppendNodesTo(XPathNavigator navigator)
+		{
+			AppendNodesTo(navigator, navigator);
+		}
+
+		public void AppendNodesTo(XPathNavigator navigator, XPathNavigator evaluator)
+		{
+			if (firstStep == null)
+				throw Error.XPathNotCreatable(this);
+
+			firstStep.AppendNodesTo(navigator, evaluator);
 		}
 
 		private static readonly IList<CompiledXPathStep>
