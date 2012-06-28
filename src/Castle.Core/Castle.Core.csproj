@@ -216,6 +216,7 @@
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlNodeBase.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlPositionComparer.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Core\XmlReferenceManager.cs" />
+    <Compile Include="Components.DictionaryAdapter\Xml\Internal\Cursors\XPath\CompiledXPathWriter.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Namespaces\XRef.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Cursors\Base\XmlContextBase.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Cursors\Base\IXmlContext.cs" />

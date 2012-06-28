@@ -265,8 +265,7 @@ namespace Castle.Components.DictionaryAdapter.Xml
 				node.MoveToParent();
 			ResetDepth();
 
-			using (var writer = node.InsertBefore())
-				WriteNode(step, writer);
+			step.InsertNodesBefore(node, Parent.AsRealizable<XPathNavigator>().Value);
 
 			var moved = node.MoveToPrevious();
 			SeekCurrentAfterCreate(moved);
@@ -281,72 +280,12 @@ namespace Castle.Components.DictionaryAdapter.Xml
 
 		private void Complete()
 		{
-			using (var writer = CreateWriterForAppend())
-				WriteNode(step, writer);
+			step.AppendNodesTo(node, Parent.AsRealizable<XPathNavigator>().Value);
 
 			var moved = step.IsAttribute
 				? node.MoveToLastAttribute()
 				: node.MoveToLastChild();
 			SeekCurrentAfterCreate(moved);
-		}
-
-		private XmlWriter CreateWriterForAppend()
-		{
-			return step.IsAttribute
-				? node.CreateAttributes()
-				: node.AppendChild();
-		}
-
-		private void WriteNode(CompiledXPathNode node, XmlWriter writer)
-		{
-			if (node.IsAttribute)
-				WriteAttribute(node, writer);
-			else if (node.IsSimple)
-				WriteSimpleElement(node, writer);
-			else
-				WriteComplexElement(node, writer);
-		}
-
-		private void WriteAttribute(CompiledXPathNode node, XmlWriter writer)
-		{
-			writer.WriteStartAttribute(node.Prefix, node.LocalName, null);
-			WriteValue(node, writer);
-			writer.WriteEndAttribute();
-		}
-
-		private void WriteSimpleElement(CompiledXPathNode node, XmlWriter writer)
-		{
-			writer.WriteStartElement(node.Prefix, node.LocalName, null);
-			WriteValue(node, writer);
-			writer.WriteEndElement();
-		}
-
-		private void WriteComplexElement(CompiledXPathNode node, XmlWriter writer)
-		{
-			writer.WriteStartElement(node.Prefix, node.LocalName, null);
-			WriteSubnodes(node, writer, true);
-			WriteSubnodes(node, writer, false);
-			writer.WriteEndElement();
-		}
-
-		private void WriteSubnodes(CompiledXPathNode parent, XmlWriter writer, bool attributes)
-		{
-			var next = parent.NextNode;
-			if (next != null && next.IsAttribute == attributes)
-				WriteNode(next, writer);
-
-			foreach (var node in parent.Dependencies)
-				if (node.IsAttribute == attributes)
-					WriteNode(node, writer);
-		}
-
-		private void WriteValue(CompiledXPathNode node, XmlWriter writer)
-		{
-			if (node.Value == null)
-				return;
-
-			var value = Parent.AsRealizable<XPathNavigator>().Value.Evaluate(node.Value);
-			writer.WriteValue(value);
 		}
 
 		private void SeekCurrentAfterCreate(bool moved)
