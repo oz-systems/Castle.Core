@@ -224,6 +224,7 @@
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Collections\XmlNodeSet.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Serializers\XmlCollectionSerializer.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Serializers\XmlSetSerializer.cs" />
+    <Compile Include="Components.DictionaryAdapter\Xml\Internal\Serializers\XmlTupleSerializer.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Serializers\XmlXmlNodeSerializer.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Types\IXmlIncludedType.cs" />
     <Compile Include="Components.DictionaryAdapter\Xml\Internal\Types\IXmlIncludedTypeMap.cs" />

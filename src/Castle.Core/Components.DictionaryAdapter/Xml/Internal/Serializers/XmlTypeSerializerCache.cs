@@ -86,6 +86,16 @@ namespace Castle.Components.DictionaryAdapter.Xml
 					// CLR binding list is not supported; use Castle version
 					genericType == typeof(BindingList<>))
 					throw Error.UnsupportedCollectionType(type);
+
+				if (genericType == typeof(Tuple<>) ||
+					genericType == typeof(Tuple<,>) ||
+					genericType == typeof(Tuple<,,>) ||
+					genericType == typeof(Tuple<,,,>) ||
+					genericType == typeof(Tuple<,,,,>) ||
+					genericType == typeof(Tuple<,,,,,>) ||
+					genericType == typeof(Tuple<,,,,,,>) ||
+					genericType == typeof(Tuple<,,,,,,,>))
+					return new XmlTupleSerializer(type);
 			}
 
 			if (type.IsInterface)
