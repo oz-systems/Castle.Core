@@ -211,6 +211,56 @@ namespace Castle.Components.DictionaryAdapter.Xml.Tests
             }
 		}
 
+		[TestFixture]
+		public class TupleProperty : XmlAdapterTestCase
+		{
+			public interface IFoo : IDictionaryAdapter
+			{
+				Tuple<string, int> A { get; set; }
+			}
+
+			public static readonly Tuple<string, int> Items = Tuple.Create("Foo", 1);
+
+            [Test]
+            public void Get_Element()
+            {
+                var foo = Create<IFoo>("<Foo> <A> <Item1>Foo</Item1> <Item2>1</Item2> </A> </Foo>");
+
+                Assert.That(foo.A, Is.EqualTo(Items));
+            }
+
+            [Test]
+            public void Get_Attribute()
+            {
+				var xml = Xml("<Foo A='a'/>");
+                var foo = Create<IFoo>(xml);
+
+                Assert.That(foo.A, Is.Null);
+				Assert.That(xml,   XmlEquivalent.To("<Foo A='a'/>"));
+            }
+
+            [Test]
+            public void Get_Missing()
+            {
+				var xml = Xml("<Foo/>");
+                var foo = Create<IFoo>("<Foo/>");
+
+                Assert.That(foo.A, Is.Null);
+				Assert.That(xml,   XmlEquivalent.To("<Foo/>"));
+            }
+
+            [Test]
+            public void Set()
+            {
+                var xml = Xml("<Foo/>");
+                var foo = Create<IFoo>(xml);
+
+                foo.A = Items;
+
+                Assert.That(xml, XmlEquivalent.To("<Foo> <A> <Item1>Foo</Item1> <Item2>1</Item2> </A> </Foo>"));
+            }
+		}
+
         [TestFixture]
         public class XmlSerializableProperty : XmlAdapterTestCase
         {
